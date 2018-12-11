@@ -52,8 +52,8 @@ description=[]
 
 #for city in city_list: #NOTE: have to further add city into url
 
-no_results = 200 #total number of results to return
-per_page = 50 #number of results to scrape per page
+no_results = 300 #total number of results to return for each city
+per_page = 50 #number of results to scrape per page for each city
 job = "supply+chain+analyst"
 cities = ["Austin","San+Francisco","Boston","Chicago","Los+Angeles","New+York","Washington"]
 
@@ -61,19 +61,18 @@ labels = ["ID","title","company","location","salary","description"] #dataframe c
 df = pd.DataFrame(columns=labels) #dataframe initialization
 
 for city in cities: #looping through predefined list of cities
-    print('compiling results for: ',city)
-    for page in range(0,no_results,per_page): #looping through pages
-        URL = "https://www.indeed.com/jobs?q={}&l={}&start={}&limit={}".format(job,city,page,per_page)
-        page = requests.get(URL) #retrieve URL
-        page_soup = soup(page.text,"html5lib") #parse URL
+        print('compiling results for: ',city)
+        for page in range(0,no_results,per_page): #looping through each page in increments of per_page
+            URL = "https://www.indeed.com/jobs?q={}&l={}&start={}&limit={}".format(job,city,page,per_page)
+            page = requests.get(URL) #retrieve URL
+            page_soup = soup(page.text,"html5lib") #parse URL
 
-        counter = 1
-        for div in page_soup.find_all("div",attrs={"class":"row"}): #for loop through all rows to extract results
-            df = df.append({'ID':counter,'title':get_title(div),'company':get_company(div),'location':get_location(div),
+            counter = 1
+            for div in page_soup.find_all("div",attrs={"class":"row"}): #for loop through all rows to extract results
+                df = df.append({'ID':counter,'title':get_title(div),'company':get_company(div),'location':get_location(div),
                        'salary':get_salary(div),'description':get_description(div)},ignore_index=True) #update dataframe with job searches
-            counter = counter + 1
-        sleep(1) #sleeping one second between scrapes
-
+                counter = counter + 1
+            sleep(1) #sleeping one second between scrapes    
 df[['title','company']]
 
 #----------------------------
@@ -84,8 +83,7 @@ conn = sqlite3.connect("jobs.db") #Create connection to SQLite database
 c = conn.cursor() #define cursor object to perform SQL commands
 
 c.execute('DROP TABLE IF EXISTS jobs;') #drop table
-sql = """CREATE TABLE IF NOT EXISTS jobs (ID integer, title varchar(50),company varchar(50)
-,location varchar(30),salary varchar(20),description text);""" 
+sql = """CREATE TABLE IF NOT EXISTS jobs (ID integer, title varchar(50),company varchar(50),location varchar(30),salary varchar(20),description text);""" 
 
 c.execute(sql)
 df.to_sql(name='jobs',con=conn,if_exists='append',index=False)

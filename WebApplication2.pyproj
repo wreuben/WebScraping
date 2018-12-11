@@ -26,9 +26,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="JobScraper\jobs.py" />
-    <Compile Include="JobScraper\db.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="JobScraper\__init__.py" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +39,7 @@
     <Content Include="jobScraper\templates\layout.html" />
     <Content Include="jobScraper\templates\about.html" />
     <Content Include="jobScraper\templates\contact.html" />
+    <Content Include="JobScraper\templates\data.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
