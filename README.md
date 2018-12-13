@@ -10,7 +10,9 @@ Once the file is running a message similar to:  *"Running on http://127.0.0.1:50
 will appear. This contains the URL that our web application is hosted in. 
 Accessing the web application will take you to the home page where you can input the job description and
 a list of cities you'd like to scrape data for. The cities must be separated by spaces.
-![Job Scraping Image](https://github.com/wreuben/WebScraping/tree/master/Images/search_page.png)
+
+![Job Scraping Image](/Images/search_page.PNG)
+
 The algorithm for scraping will take a while. The more cities entered, the longer the run time as there is a sleep
 timer in between pages. Once the scraping has completed the user will be redirected to an output page that contains
 a simple view of the data scraped and there will also be a SQL database created containing the data.
