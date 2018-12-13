@@ -41,6 +41,7 @@ libraries used for this application:
 * BeautifulSoup: library for pulling data out of HTML and XML files
 * Flask: web development framework
 * Pandas: open source library with data analysis tools
+* Sqlite3: a C library that provides a lightweight disk-based database that doesn’t require a separate server process and allows accessing the database using a nonstandard variant of the SQL query language.
 * Time: library that allows us to take breaks in between data scraping so the website doesn't boot 
 us for scraping too much data
 
@@ -51,6 +52,8 @@ Run the following commands to install in virtual environment (Conda comes with t
 `<$ pip install Beautifulsoup4>` 
 
 `<$ pip install Pandas>`
+
+`<$ pip install sqlite3>`
 
 `<$ pip install Time>`
 
