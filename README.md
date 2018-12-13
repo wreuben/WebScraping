@@ -9,8 +9,10 @@ each of the cities.
 Once the file is running a message similar to:  *"Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)"* 
 will appear. This contains the URL that our web application is hosted in. 
 Accessing the web application will take you to the home page where you can input the job description and
-a list of cities you'd like to scrape data for. The cities must be separated by spaces.
-![Job Scraping Image](https://github.com/wreuben/WebScraping/Images/search_page.png)
+a list of cities you'd like to scrape data for. The cities must be separated by commas.
+
+![Job Scraping Image](/Images/search_page.PNG)
+
 The algorithm for scraping will take a while. The more cities entered, the longer the run time as there is a sleep
 timer in between pages. Once the scraping has completed the user will be redirected to an output page that contains
 a simple view of the data scraped and there will also be a SQL database created containing the data.
@@ -38,7 +40,9 @@ https://docs.python-guide.org/dev/virtualenvs/
 libraries used for this application:
 * BeautifulSoup: library for pulling data out of HTML and XML files
 * Flask: web development framework
+* html5lib: a pure-python library for parsing HTML
 * Pandas: open source library with data analysis tools
+* Sqlite3: a C library that provides a lightweight disk-based database that doesn’t require a separate server process and allows accessing the database using a nonstandard variant of the SQL query language.
 * Time: library that allows us to take breaks in between data scraping so the website doesn't boot 
 us for scraping too much data
 
@@ -48,7 +52,11 @@ Run the following commands to install in virtual environment (Conda comes with t
 
 `<$ pip install Beautifulsoup4>` 
 
+`<$ pip install html5lib>`
+
 `<$ pip install Pandas>`
+
+`<$ pip install sqlite3>`
 
 `<$ pip install Time>`
 
