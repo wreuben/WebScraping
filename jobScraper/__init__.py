@@ -3,7 +3,7 @@
 #------------------------------------------------
 from flask import Flask, request, render_template #import flask class to begin web development
 import pandas as pd #import pandas to deal with dataframes
-from jobScraper import jobs #call and import jobs.py file
+import jobs #call and import jobs.py file
 import sqlite3
 
 #-----------------------------------------------------------------------------------
