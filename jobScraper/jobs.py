@@ -3,7 +3,6 @@
 #------------------------------------------------
 import bs4
 from bs4 import BeautifulSoup as soup
-from urllib.request import urlopen as uReq
 
 from time import sleep
 import os #for clearing console
