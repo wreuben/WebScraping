@@ -38,7 +38,6 @@
     <Content Include="jobScraper\templates\about.html" />
     <Content Include="jobScraper\templates\contact.html" />
     <Content Include="JobScraper\templates\data.html" />
-    <Content Include="JobScraper\WebPage1.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

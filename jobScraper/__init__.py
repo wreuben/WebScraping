@@ -4,6 +4,7 @@
 from flask import Flask, request, render_template #import flask class to begin web development
 import pandas as pd #import pandas to deal with dataframes
 from jobScraper import jobs #call and import jobs.py file
+import sqlite3
 
 #-----------------------------------------------------------------------------------
 ###FLASK APPLICATION###
@@ -27,7 +28,7 @@ def my_form_post(): #processing text from search box
     text2 = request.form['cities'] #get user input for cities to search through
 
     words = text1.split() #split up user text into a list for processing
-    cities = text2.split() #split up cities into list for processing
+    cities = text2.replace(" ","").split(",") #split up cities into list for processing
 
     search = "" #initialize empty string that will contain the job description to search
     for word in words: #for loop to make job description format fit into indeed url
@@ -39,7 +40,6 @@ def my_form_post(): #processing text from search box
     #-----------------------------------
     # Putting data into sqlite database
     #-----------------------------------
-    import sqlite3
     conn = sqlite3.connect("jobs.db") #Create connection to SQLite database
     c = conn.cursor() #define cursor object to perform SQL commands
 
@@ -62,5 +62,3 @@ def contact():
 
 if __name__ == '__main__':
     app.run(debug=False)
-
-
